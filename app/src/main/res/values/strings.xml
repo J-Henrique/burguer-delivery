@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Burguer Delivery</string>
+
+    <string name="tab_item_burguers">Burguers</string>
+    <string name="tab_item_sales">Promoções</string>
+    <string name="tab_item_orders">Pedidos</string>
 </resources>
