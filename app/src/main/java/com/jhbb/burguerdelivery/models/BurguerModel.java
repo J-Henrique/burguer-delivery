@@ -1,12 +1,20 @@
 package com.jhbb.burguerdelivery.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Arrays;
 
 public class BurguerModel {
 
+    @SerializedName("id")
     private int idLanche;
+
     private String name;
+
+    @SerializedName("ingredients")
     private int[] idIngredients;
+
+    @SerializedName("image")
     private String urlImage;
 
     public BurguerModel() {
