@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.databinding.BurgerCardBinding;
 import com.jhbb.burguerdelivery.models.BurgerModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,6 +32,12 @@ public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurgersV
     @Override
     public void onBindViewHolder(@NonNull BurgersViewHolder viewHolder, int i) {
         final BurgerModel burger = mDataSet.get(i);
+
+        Picasso.get()
+            .load(burger.getUrlImage())
+            .noFade()
+            .placeholder(R.drawable.ic_food)
+            .into(viewHolder.mBinding.ivPicture);
 
         viewHolder.bind(burger);
     }
