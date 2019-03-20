@@ -10,16 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jhbb.burguerdelivery.R;
-import com.jhbb.burguerdelivery.databinding.FragmentBurguersBinding;
+import com.jhbb.burguerdelivery.databinding.FragmentBurgersBinding;
 
-public class BurguersFragment extends Fragment {
+public class BurgersFragment extends Fragment {
 
-    private FragmentBurguersBinding mBinding;
+    private FragmentBurgersBinding mBinding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_burguers, container, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_burgers, container, false);
 
         return mBinding.getRoot();
     }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
 
-public class BurguerModel {
+public class BurgerModel {
 
     @SerializedName("id")
     private int idLanche;
@@ -17,7 +17,7 @@ public class BurguerModel {
     @SerializedName("image")
     private String urlImage;
 
-    public BurguerModel() {
+    public BurgerModel() {
     }
 
     public int getIdLanche() {
@@ -54,7 +54,7 @@ public class BurguerModel {
 
     @Override
     public String toString() {
-        return "BurguerModel{" +
+        return "BurgerModel{" +
                 "idLanche=" + idLanche +
                 ", name='" + name + '\'' +
                 ", idIngredients=" + Arrays.toString(idIngredients) +

@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.databinding.ActivityMainBinding;
-import com.jhbb.burguerdelivery.ui.adapters.BurguerDeliveryPagerAdapter;
+import com.jhbb.burguerdelivery.ui.adapters.BurgerDeliveryPagerAdapter;
 import com.jhbb.burguerdelivery.viewmodels.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mBinding.setViewModel(mViewModel);
 
-        mViewModel.loadBurguer();
-
-        BurguerDeliveryPagerAdapter pagerAdapter = new BurguerDeliveryPagerAdapter(getSupportFragmentManager());
+        BurgerDeliveryPagerAdapter pagerAdapter = new BurgerDeliveryPagerAdapter(getSupportFragmentManager());
         mBinding.viewPager.setAdapter(pagerAdapter);
 
         setupTabLayout();
@@ -38,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = mBinding.tabLayout;
         tabLayout.setupWithViewPager(mBinding.viewPager);
 
-        // Burguers tab
+        // Burgers tab
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_hamburguer);
-        tabLayout.getTabAt(0).setText(R.string.tab_item_burguers);
+        tabLayout.getTabAt(0).setText(R.string.tab_item_burgers);
 
         // Sales tab
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_sales);

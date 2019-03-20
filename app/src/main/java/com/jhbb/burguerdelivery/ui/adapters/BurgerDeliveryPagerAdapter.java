@@ -4,17 +4,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jhbb.burguerdelivery.ui.fragments.BurguersFragment;
+import com.jhbb.burguerdelivery.ui.fragments.BurgersFragment;
 
-public class BurguerDeliveryPagerAdapter extends FragmentPagerAdapter {
+public class BurgerDeliveryPagerAdapter extends FragmentPagerAdapter {
 
-    public BurguerDeliveryPagerAdapter(FragmentManager fm) {
+    public BurgerDeliveryPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int i) {
-        return new BurguersFragment();
+        return new BurgersFragment();
     }
 
     @Override

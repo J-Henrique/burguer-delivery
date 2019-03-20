@@ -1,6 +1,6 @@
 package com.jhbb.burguerdelivery.services;
 
-import com.jhbb.burguerdelivery.models.BurguerModel;
+import com.jhbb.burguerdelivery.models.BurgerModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,8 +9,8 @@ import retrofit2.http.Path;
 public interface BurguerService {
 
     @GET("lanche")
-    Call<BurguerModel[]> getBurguers();
+    Call<BurgerModel[]> getBurgers();
 
     @GET("lanche/{id_lanche}")
-    Call<BurguerModel> getBurguerById(@Path("id_lanche") String idLanche);
+    Call<BurgerModel> getBurgerById(@Path("id_lanche") String idLanche);
 }

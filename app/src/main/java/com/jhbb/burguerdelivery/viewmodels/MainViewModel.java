@@ -6,20 +6,20 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.jhbb.burguerdelivery.models.BurguerModel;
+import com.jhbb.burguerdelivery.models.BurgerModel;
 import com.jhbb.burguerdelivery.repository.Repository;
 
 import java.util.List;
 
 public class MainViewModel extends AndroidViewModel {
 
-    private LiveData<List<BurguerModel>> burguerLiveData;
+    private LiveData<List<BurgerModel>> burguerLiveData;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<BurguerModel>> getBurguerObservable() {
+    public LiveData<List<BurgerModel>> getBurguerObservable() {
         if (burguerLiveData == null) {
             burguerLiveData = new MutableLiveData<>();
         }
