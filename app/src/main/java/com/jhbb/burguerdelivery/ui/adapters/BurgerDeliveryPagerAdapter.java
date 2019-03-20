@@ -14,7 +14,14 @@ public class BurgerDeliveryPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        return new BurgersFragment();
+        if (i == 0) {
+            return new BurgersFragment();
+        } else if (i == 1) {
+            return new BurgersFragment();
+        } else {
+            return new BurgersFragment();
+        }
+
     }
 
     @Override

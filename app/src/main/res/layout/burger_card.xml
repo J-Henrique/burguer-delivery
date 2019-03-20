@@ -9,45 +9,40 @@
             type="com.jhbb.burguerdelivery.models.BurgerModel" />
     </data>
 
-    <android.support.design.card.MaterialCardView
+    <LinearLayout
+        android:padding="8dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:padding="8dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            tools:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <ImageView
-                tools:src="@mipmap/ic_launcher"
-                android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                tools:text="X-Bacon"
+                android:text="@{burger.name}"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:orientation="vertical"
+            <TextView
+                tools:text="Ingrediente 1, Ingrediente 2, Ingrediente 4, Ingrediente 4, Ingrediente 5, Ingrediente 6, Ingrediente 7"
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    tools:text="X-Bacon"
-                    android:text="@{burger.name}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    tools:text="Ingrediente 1, Ingrediente 2, Ingrediente 4, Ingrediente 4, Ingrediente 5, Ingrediente 6, Ingrediente 7"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    tools:text="R$ 20,00"
-                    android:text="@{burger.name}"
-                    android:textAlignment="textEnd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+            <TextView
+                tools:text="R$ 20,00"
+                android:text="@{burger.name}"
+                android:textAlignment="textEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-    </android.support.design.card.MaterialCardView>
+    </LinearLayout>
 </layout>

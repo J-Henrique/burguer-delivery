@@ -12,27 +12,27 @@ import com.jhbb.burguerdelivery.models.BurgerModel;
 
 import java.util.List;
 
-public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurguersViewHolder> {
+public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurgersViewHolder> {
 
     private List<BurgerModel> mDataSet;
 
     @NonNull
     @Override
-    public BurguersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public BurgersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         BurgerCardBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(viewGroup.getContext()),
                 R.layout.burger_card,
                 viewGroup,
                 false);
 
-        return new BurguersViewHolder(binding);
+        return new BurgersViewHolder(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BurguersViewHolder viewHolder, int i) {
-        final BurgerModel burguer = mDataSet.get(i);
+    public void onBindViewHolder(@NonNull BurgersViewHolder viewHolder, int i) {
+        final BurgerModel burger = mDataSet.get(i);
 
-        viewHolder.bind(burguer);
+        viewHolder.bind(burger);
     }
 
     @Override
@@ -45,17 +45,18 @@ public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.Burguers
         notifyDataSetChanged();
     }
 
-    public class BurguersViewHolder extends RecyclerView.ViewHolder {
+    public class BurgersViewHolder extends RecyclerView.ViewHolder {
 
         private final BurgerCardBinding mBinding;
 
-        public BurguersViewHolder(BurgerCardBinding binding) {
+        public BurgersViewHolder(BurgerCardBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
         }
 
         void bind(BurgerModel burguer) {
             mBinding.setBurger(burguer);
+            mBinding.executePendingBindings();
         }
     }
 }

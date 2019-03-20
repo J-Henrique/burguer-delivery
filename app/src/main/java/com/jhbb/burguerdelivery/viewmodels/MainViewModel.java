@@ -3,7 +3,6 @@ package com.jhbb.burguerdelivery.viewmodels;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.jhbb.burguerdelivery.models.BurgerModel;
@@ -13,21 +12,21 @@ import java.util.List;
 
 public class MainViewModel extends AndroidViewModel {
 
-    private LiveData<List<BurgerModel>> burguerLiveData;
+    private LiveData<List<BurgerModel>> burgerLiveData;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<BurgerModel>> getBurguerObservable() {
-        if (burguerLiveData == null) {
-            burguerLiveData = new MutableLiveData<>();
+    public LiveData<List<BurgerModel>> getBurgerObservable() {
+        if (burgerLiveData == null) {
+            burgerLiveData = Repository.getInstance(getApplication()).getBurgerLiveData();
         }
 
-        return burguerLiveData;
+        return burgerLiveData;
     }
 
-    public void loadBurguer() {
-        Repository.getInstance(getApplication()).loadBurguers();
+    public void loadBurgers() {
+        Repository.getInstance(getApplication()).loadBurgers();
     }
 }

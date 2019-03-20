@@ -3,9 +3,9 @@ package com.jhbb.burguerdelivery.ui.activities;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.databinding.ActivityMainBinding;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         BurgerDeliveryPagerAdapter pagerAdapter = new BurgerDeliveryPagerAdapter(getSupportFragmentManager());
         mBinding.viewPager.setAdapter(pagerAdapter);
 
-        setupTabLayout();
+       setupTabLayout();
     }
 
     private void setupTabLayout() {

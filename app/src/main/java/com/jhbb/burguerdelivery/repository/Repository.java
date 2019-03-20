@@ -1,5 +1,6 @@
 package com.jhbb.burguerdelivery.repository;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class Repository {
     private final OrderService orderService;
     private final SaleService saleService;
 
-    private final MutableLiveData<List<BurgerModel>> burguerObservable = new MutableLiveData<>();
+    private final MutableLiveData<List<BurgerModel>> burgerObservable = new MutableLiveData<>();
 
     private Repository(final Context context) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -56,20 +57,24 @@ public class Repository {
         return sRepository;
     }
 
-    public void loadBurguers() {
+    public LiveData<List<BurgerModel>> getBurgerLiveData() {
+        return burgerObservable;
+    }
+
+    public void loadBurgers() {
         burguerService.getBurgers().enqueue(new Callback<BurgerModel[]>() {
             @Override
             public void onResponse(Call<BurgerModel[]> call, Response<BurgerModel[]> response) {
                 Log.d(TAG, "onResponse: returned " + Arrays.asList(response.body()).size());
 
-                burguerObservable.setValue(Arrays.asList(response.body()));
+                burgerObservable.setValue(Arrays.asList(response.body()));
             }
 
             @Override
             public void onFailure(Call<BurgerModel[]> call, Throwable t) {
                 Log.e(TAG, "onFailure: t", t);
 
-                burguerObservable.setValue(null);
+                burgerObservable.setValue(null);
             }
         });
     }
