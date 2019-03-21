@@ -3,6 +3,7 @@ package com.jhbb.burguerdelivery.models;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class BurgerModel {
 
@@ -12,7 +13,7 @@ public class BurgerModel {
     private String name;
 
     @SerializedName("ingredients")
-    private int[] idIngredients;
+    private List<IngredientModel> ingredients;
 
     @SerializedName("image")
     private String urlImage;
@@ -36,12 +37,12 @@ public class BurgerModel {
         this.name = name;
     }
 
-    public int[] getIdIngredients() {
-        return idIngredients;
+    public List<IngredientModel> getIdIngredients() {
+        return ingredients;
     }
 
-    public void setIdIngredients(int[] idIngredients) {
-        this.idIngredients = idIngredients;
+    public void setIdIngredients(List<IngredientModel> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getUrlImage() {
@@ -57,7 +58,7 @@ public class BurgerModel {
         return "BurgerModel{" +
                 "idLanche=" + idLanche +
                 ", name='" + name + '\'' +
-                ", idIngredients=" + Arrays.toString(idIngredients) +
+                ", ingredients=" + Arrays.toString(ingredients.toArray()) +
                 ", urlImage='" + urlImage + '\'' +
                 '}';
     }

@@ -1,10 +1,17 @@
 package com.jhbb.burguerdelivery.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class IngredientModel {
 
+    @SerializedName("id")
     private int idIngredient;
+
     private String name;
-    private Long price;
+
+    private double price;
+
+    @SerializedName("image")
     private String urlImage;
 
     public IngredientModel() {
@@ -26,11 +33,11 @@ public class IngredientModel {
         this.name = name;
     }
 
-    public Long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

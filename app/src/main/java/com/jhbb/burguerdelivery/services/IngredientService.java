@@ -12,5 +12,5 @@ public interface IngredientService {
     Call<IngredientModel[]> getIngredients();
 
     @GET("ingrediente/{id_lanche}")
-    Call<IngredientModel> getIngredientById(@Path("id_lanche") String idLanche);
+    Call<IngredientModel[]> getIngredientById(@Path("id_lanche") String idLanche);
 }
