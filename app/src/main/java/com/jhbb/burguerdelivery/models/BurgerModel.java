@@ -2,9 +2,12 @@ package com.jhbb.burguerdelivery.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.util.Arrays;
 import java.util.List;
 
+@Parcel
 public class BurgerModel {
 
     @SerializedName("id")
@@ -79,6 +82,7 @@ public class BurgerModel {
                 "idLanche=" + idLanche +
                 ", name='" + name + '\'' +
                 ", ingredients=" + Arrays.toString(ingredients.toArray()) +
+                ", totalPrice=" + price +
                 ", urlImage='" + urlImage + '\'' +
                 '}';
     }

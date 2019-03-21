@@ -2,6 +2,9 @@ package com.jhbb.burguerdelivery.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class IngredientModel {
 
     @SerializedName("id")
