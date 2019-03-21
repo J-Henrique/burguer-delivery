@@ -130,6 +130,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="16dp"
                     android:text="@string/btn_order"
+                    android:onClick="confirmClick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

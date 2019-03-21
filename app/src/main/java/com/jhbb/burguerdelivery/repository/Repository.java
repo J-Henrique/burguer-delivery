@@ -8,6 +8,7 @@ import android.util.Log;
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.models.BurgerModel;
 import com.jhbb.burguerdelivery.models.IngredientModel;
+import com.jhbb.burguerdelivery.models.OrderModel;
 import com.jhbb.burguerdelivery.services.BurguerService;
 import com.jhbb.burguerdelivery.services.IngredientService;
 import com.jhbb.burguerdelivery.services.OrderService;
@@ -36,6 +37,7 @@ public class Repository {
     private final SaleService saleService;
 
     private final MutableLiveData<List<BurgerModel>> burgerObservable = new MutableLiveData<>();
+    private final MutableLiveData<OrderModel> orderObservable = new MutableLiveData<>();
 
     private List<BurgerModel> cachedBurgers;
 
@@ -90,6 +92,24 @@ public class Repository {
                 Log.e(TAG, "onFailure: t", t);
 
                 burgerObservable.setValue(null);
+            }
+        });
+    }
+
+    public LiveData<OrderModel> getOrderLiveData() {
+        return orderObservable;
+    }
+
+    public void sendOrder(BurgerModel burger) {
+        orderService.putOrder(String.valueOf(burger.getIdLanche())).enqueue(new Callback<OrderModel>() {
+            @Override
+            public void onResponse(Call<OrderModel> call, Response<OrderModel> response) {
+                orderObservable.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<OrderModel> call, Throwable t) {
+                orderObservable.setValue(null);
             }
         });
     }
