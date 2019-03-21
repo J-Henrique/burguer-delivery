@@ -34,6 +34,8 @@ public class Repository {
 
     private final MutableLiveData<List<BurgerModel>> burgerObservable = new MutableLiveData<>();
 
+    private List<BurgerModel> cachedBurgers;
+
     private Repository(final Context context) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(context.getResources().getString(R.string.apiUrl))
@@ -65,9 +67,11 @@ public class Repository {
         burguerService.getBurgers().enqueue(new Callback<BurgerModel[]>() {
             @Override
             public void onResponse(Call<BurgerModel[]> call, Response<BurgerModel[]> response) {
-                Log.d(TAG, "onResponse: returned " + Arrays.asList(response.body()).size());
+                cachedBurgers = Arrays.asList(response.body());
 
-                burgerObservable.setValue(Arrays.asList(response.body()));
+                Log.d(TAG, "onResponse: returned " + cachedBurgers.size());
+
+                burgerObservable.setValue(cachedBurgers);
             }
 
             @Override
