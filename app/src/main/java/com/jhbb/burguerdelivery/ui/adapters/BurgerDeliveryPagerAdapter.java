@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jhbb.burguerdelivery.ui.fragments.BurgersFragment;
+import com.jhbb.burguerdelivery.ui.fragments.OrdersFragment;
+import com.jhbb.burguerdelivery.ui.fragments.SalesFragment;
 
 public class BurgerDeliveryPagerAdapter extends FragmentPagerAdapter {
 
@@ -17,9 +19,9 @@ public class BurgerDeliveryPagerAdapter extends FragmentPagerAdapter {
         if (i == 0) {
             return new BurgersFragment();
         } else if (i == 1) {
-            return new BurgersFragment();
+            return new SalesFragment();
         } else {
-            return new BurgersFragment();
+            return new OrdersFragment();
         }
 
     }
