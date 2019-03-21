@@ -40,7 +40,7 @@ const sandwiches = {
 	        {id: 4, name: 'Ovo', price: 0.80, image: 'https://goo.gl/weL1Rj'},
             {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
             {id: 6, name: 'Pão com gergelim', price: 1.00, image: 'https://goo.gl/evgjyj'}],
-	    image: 'https://goo.gl/x4rNIq'},
+	    image: 'https://bit.ly/2Fs0kDN'},
 
 	4: {
 	    id: 4,
@@ -52,7 +52,7 @@ const sandwiches = {
             {id: 4, name: 'Ovo', price: 0.80, image: 'https://goo.gl/weL1Rj'},
             {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
             {id: 6, name: 'Pão com gergelim', price: 1.00, image: 'https://goo.gl/evgjyj'}],
-        image: 'https://goo.gl/2L0lqg'}
+        image: 'https://bit.ly/2YfhtYO'}
 }
 
 const promos = {
