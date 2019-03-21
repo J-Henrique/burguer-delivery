@@ -47,8 +47,8 @@ public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurgersV
         return mDataSet != null ? mDataSet.size() : 0;
     }
 
-    public void setDataSet(List<BurgerModel> burguersList) {
-        mDataSet = burguersList;
+    public void setDataSet(List<BurgerModel> burgersList) {
+        mDataSet = burgersList;
         notifyDataSetChanged();
     }
 
@@ -61,8 +61,8 @@ public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurgersV
             mBinding = binding;
         }
 
-        void bind(BurgerModel burguer) {
-            mBinding.setBurger(burguer);
+        void bind(BurgerModel burger) {
+            mBinding.setBurger(burger);
             mBinding.executePendingBindings();
         }
     }

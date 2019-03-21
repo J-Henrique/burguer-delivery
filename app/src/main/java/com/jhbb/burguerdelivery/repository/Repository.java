@@ -7,11 +7,14 @@ import android.util.Log;
 
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.models.BurgerModel;
+import com.jhbb.burguerdelivery.models.IngredientModel;
 import com.jhbb.burguerdelivery.services.BurguerService;
 import com.jhbb.burguerdelivery.services.IngredientService;
 import com.jhbb.burguerdelivery.services.OrderService;
 import com.jhbb.burguerdelivery.services.SaleService;
+import com.jhbb.burguerdelivery.utils.BurgerUtils;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,6 +73,14 @@ public class Repository {
                 cachedBurgers = Arrays.asList(response.body());
 
                 Log.d(TAG, "onResponse: returned " + cachedBurgers.size());
+
+                for (BurgerModel burger: cachedBurgers) {
+                    String formattedText = BurgerUtils.getFormattedIngredientsList(burger.getIngredients());
+                    double price = BurgerUtils.getBurgerPrice(burger.getIngredients());
+
+                    burger.setIngredientsList(formattedText);
+                    burger.setPrice(price);
+                }
 
                 burgerObservable.setValue(cachedBurgers);
             }

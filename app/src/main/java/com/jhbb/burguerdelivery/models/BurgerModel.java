@@ -15,6 +15,10 @@ public class BurgerModel {
     @SerializedName("ingredients")
     private List<IngredientModel> ingredients;
 
+    private String ingredientsList;
+
+    private double price;
+
     @SerializedName("image")
     private String urlImage;
 
@@ -37,12 +41,28 @@ public class BurgerModel {
         this.name = name;
     }
 
-    public List<IngredientModel> getIdIngredients() {
+    public List<IngredientModel> getIngredients() {
         return ingredients;
     }
 
-    public void setIdIngredients(List<IngredientModel> ingredients) {
+    public void setIngredients(List<IngredientModel> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public String getIngredientsList() {
+        return ingredientsList;
+    }
+
+    public void setIngredientsList(String ingredientsList) {
+        this.ingredientsList = ingredientsList;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getUrlImage() {
