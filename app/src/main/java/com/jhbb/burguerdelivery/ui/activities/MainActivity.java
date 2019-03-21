@@ -3,6 +3,7 @@ package com.jhbb.burguerdelivery.ui.activities;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import com.jhbb.burguerdelivery.databinding.ActivityMainBinding;
 import com.jhbb.burguerdelivery.models.BurgerModel;
 import com.jhbb.burguerdelivery.ui.adapters.BurgerDeliveryPagerAdapter;
 import com.jhbb.burguerdelivery.viewmodels.MainViewModel;
+
+import org.parceler.Parcels;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
         mViewModel.getSelectedBurgerLiveData().observe(this, new Observer<BurgerModel>() {
             @Override
             public void onChanged(@Nullable BurgerModel burgerModel) {
-                
+                Intent startOrderActivity = new Intent(MainActivity.this, OrderActivity.class);
+                startOrderActivity.putExtra(OrderActivity.EXTRA_SELECTED_ITEM, Parcels.wrap(burgerModel));
+
+                startActivity(startOrderActivity);
             }
         });
     }
