@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.jhbb.burguerdelivery.R;
@@ -16,6 +17,15 @@ import java.util.List;
 public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurgersViewHolder> {
 
     private List<BurgerModel> mDataSet;
+    private CardClickListener mItemClick;
+
+    public interface CardClickListener {
+        void onItemClick(BurgerModel burger);
+    }
+
+    public BurgersAdapter(CardClickListener cardClickListener) {
+        mItemClick = cardClickListener;
+    }
 
     @NonNull
     @Override
@@ -38,6 +48,13 @@ public class BurgersAdapter extends RecyclerView.Adapter<BurgersAdapter.BurgersV
             .noFade()
             .placeholder(R.drawable.ic_food)
             .into(viewHolder.mBinding.ivPicture);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mItemClick.onItemClick(burger);
+            }
+        });
 
         viewHolder.bind(burger);
     }

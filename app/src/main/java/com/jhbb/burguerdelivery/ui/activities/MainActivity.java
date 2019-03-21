@@ -1,14 +1,17 @@
 
 package com.jhbb.burguerdelivery.ui.activities;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.databinding.ActivityMainBinding;
+import com.jhbb.burguerdelivery.models.BurgerModel;
 import com.jhbb.burguerdelivery.ui.adapters.BurgerDeliveryPagerAdapter;
 import com.jhbb.burguerdelivery.viewmodels.MainViewModel;
 
@@ -30,6 +33,17 @@ public class MainActivity extends AppCompatActivity {
         mBinding.viewPager.setAdapter(pagerAdapter);
 
        setupTabLayout();
+
+       setupItemClickListener();
+    }
+
+    private void setupItemClickListener() {
+        mViewModel.getSelectedBurgerLiveData().observe(this, new Observer<BurgerModel>() {
+            @Override
+            public void onChanged(@Nullable BurgerModel burgerModel) {
+                
+            }
+        });
     }
 
     private void setupTabLayout() {

@@ -19,7 +19,7 @@ import com.jhbb.burguerdelivery.viewmodels.MainViewModel;
 
 import java.util.List;
 
-public class BurgersFragment extends Fragment {
+public class BurgersFragment extends Fragment implements BurgersAdapter.CardClickListener {
 
     private FragmentBurgersBinding mBinding;
     private BurgersAdapter mBurgersAdapter;
@@ -30,7 +30,7 @@ public class BurgersFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_burgers, container, false);
 
-        mBurgersAdapter = new BurgersAdapter();
+        mBurgersAdapter = new BurgersAdapter(this);
         mBinding.rvBurguersList.setAdapter(mBurgersAdapter);
 
         return mBinding.getRoot();
@@ -49,5 +49,10 @@ public class BurgersFragment extends Fragment {
         });
 
         mMainViewModel.loadBurgers();
+    }
+
+    @Override
+    public void onItemClick(BurgerModel burger) {
+        mMainViewModel.selectBurger(burger);
     }
 }
