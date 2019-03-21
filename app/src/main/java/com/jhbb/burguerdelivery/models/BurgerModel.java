@@ -22,6 +22,8 @@ public class BurgerModel {
 
     private double price;
 
+    private String description;
+
     @SerializedName("image")
     private String urlImage;
 
@@ -68,6 +70,14 @@ public class BurgerModel {
         this.price = price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getUrlImage() {
         return urlImage;
     }
@@ -81,6 +91,7 @@ public class BurgerModel {
         return "BurgerModel{" +
                 "idLanche=" + idLanche +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", ingredients=" + Arrays.toString(ingredients.toArray()) +
                 ", totalPrice=" + price +
                 ", urlImage='" + urlImage + '\'' +
