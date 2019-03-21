@@ -13,10 +13,46 @@ const ingredients = {
 }
 
 const sandwiches = {
-	1: {id: 1, name: 'X-Bacon', ingredients: [2, 3, 5, 6], image: 'https://goo.gl/W9WdaF'},
-	2: {id: 2, name: 'X-Burger', ingredients: [3, 5, 6], image: 'https://goo.gl/Cjfxi9'},
-	3: {id: 3, name: 'X-Egg', ingredients: [3, 4, 5, 6], image: 'https://goo.gl/x4rNIq'},
-	4: {id: 4, name: 'X-Egg Bacon', ingredients: [1, 2, 3, 4, 5, 6], image: 'https://goo.gl/2L0lqg'}
+	1: {
+        id: 1,
+        name: 'X-Bacon',
+        ingredients: [
+            {id: 2, name: 'Bacon', price: 2.00, image: 'https://goo.gl/8qkVH0'},
+            {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
+            {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
+            {id: 6, name: 'Pão com gergelim', price: 1.00, image: 'https://goo.gl/evgjyj'}],
+        image: 'https://goo.gl/W9WdaF'},
+
+	2: {
+	    id: 2,
+	    name: 'X-Burger',
+	    ingredients: [
+	        {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
+	        {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
+	        {id: 6, name: 'Pão com gergelim', price: 1.00, image: 'https://goo.gl/evgjyj'}],
+	    image: 'https://goo.gl/Cjfxi9'},
+
+	3: {
+	    id: 3,
+	    name: 'X-Egg',
+	    ingredients: [
+	        {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
+	        {id: 4, name: 'Ovo', price: 0.80, image: 'https://goo.gl/weL1Rj'},
+            {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
+            {id: 6, name: 'Pão com gergelim', price: 1.00, image: 'https://goo.gl/evgjyj'}],
+	    image: 'https://goo.gl/x4rNIq'},
+
+	4: {
+	    id: 4,
+	    name: 'X-Egg Bacon',
+	    ingredients: [
+	        {id: 1, name: 'Alface', price: 0.40, image: 'https://goo.gl/9DhCgk'},
+            {id: 2, name: 'Bacon', price: 2.00, image: 'https://goo.gl/8qkVH0'},
+            {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
+            {id: 4, name: 'Ovo', price: 0.80, image: 'https://goo.gl/weL1Rj'},
+            {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
+            {id: 6, name: 'Pão com gergelim', price: 1.00, image: 'https://goo.gl/evgjyj'}],
+        image: 'https://goo.gl/2L0lqg'}
 }
 
 const promos = {
