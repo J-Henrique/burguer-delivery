@@ -16,6 +16,7 @@ const sandwiches = {
 	1: {
         id: 1,
         name: 'X-Bacon',
+	description: 'O mais pedido de todos!',
         ingredients: [
             {id: 2, name: 'Bacon', price: 2.00, image: 'https://goo.gl/8qkVH0'},
             {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
@@ -26,6 +27,7 @@ const sandwiches = {
 	2: {
 	    id: 2,
 	    name: 'X-Burger',
+		description: 'Tradicional hamburguer no estilo americano.',
 	    ingredients: [
 	        {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
 	        {id: 5, name: 'Queijo', price: 1.50, image: 'https://goo.gl/D69Ow2'},
@@ -35,6 +37,7 @@ const sandwiches = {
 	3: {
 	    id: 3,
 	    name: 'X-Egg',
+		description: 'O tradicional hambúrguer, acompanhado de ovos.',
 	    ingredients: [
 	        {id: 3, name: 'Hamburguer de Carne', price: 3.00, image: 'https://goo.gl/U01SnT'},
 	        {id: 4, name: 'Ovo', price: 0.80, image: 'https://goo.gl/weL1Rj'},
@@ -45,6 +48,7 @@ const sandwiches = {
 	4: {
 	    id: 4,
 	    name: 'X-Egg Bacon',
+		description: 'Todos ingredientes da casa em um só hambúrguer!',
 	    ingredients: [
 	        {id: 1, name: 'Alface', price: 0.40, image: 'https://goo.gl/9DhCgk'},
             {id: 2, name: 'Bacon', price: 2.00, image: 'https://goo.gl/8qkVH0'},
