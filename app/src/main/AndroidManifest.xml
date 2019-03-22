@@ -13,9 +13,11 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.activities.OrderActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.activities.MainActivity"/>
 
-        <activity android:name=".ui.activities.MainActivity">
+        <activity android:name=".ui.activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
