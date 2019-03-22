@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="sale"
+            type="com.jhbb.burguerdelivery.models.SaleModel" />
+    </data>
+
+    <android.support.design.card.MaterialCardView
+        android:layout_margin="6dp"
+        android:elevation="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                tools:text="Light"
+                android:text="@{sale.name}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                tools:text="Se o lanche tem alface e não tem bacon, ganha 10% de desconto."
+                android:text="@{sale.description}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </android.support.design.card.MaterialCardView>
+</layout>
