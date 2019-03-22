@@ -6,7 +6,6 @@
     <android.support.v7.widget.RecyclerView
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         android:id="@+id/rv_sales_list"
-        tools:listitem="@layout/burger_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </layout>

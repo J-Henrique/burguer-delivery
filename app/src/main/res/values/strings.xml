@@ -9,4 +9,9 @@
     <string name="txt_ingredients">Ingredientes</string>
     <string name="txt_price">Preço</string>
     <string name="btn_order">Finalizar</string>
+
+    <string name="msg_order">Pedido adicionado ao carrinho!</string>
+
+    <string name="txt_order">Pedido</string>
+    <string name="txt_burger">Lanche</string>
 </resources>

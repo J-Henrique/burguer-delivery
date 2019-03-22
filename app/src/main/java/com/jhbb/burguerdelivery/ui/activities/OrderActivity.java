@@ -1,18 +1,16 @@
 package com.jhbb.burguerdelivery.ui.activities;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.databinding.ActivityOrderBinding;
 import com.jhbb.burguerdelivery.models.BurgerModel;
-import com.jhbb.burguerdelivery.models.OrderModel;
 import com.jhbb.burguerdelivery.viewmodels.OrderViewModel;
 import com.squareup.picasso.Picasso;
 
@@ -42,18 +40,9 @@ public class OrderActivity extends AppCompatActivity {
             setupImage(mBurger);
         }
 
-        setupOrderListener();
+        mViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
     }
 
-    private void setupOrderListener() {
-        mViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
-        mViewModel.getOrderObservable().observe(this, new Observer<OrderModel>() {
-            @Override
-            public void onChanged(@Nullable OrderModel orderModel) {
-                Log.d(TAG, "onChanged: " + orderModel.toString());
-            }
-        });
-    }
 
     private void setupImage(BurgerModel burger) {
         Picasso.get()
@@ -69,5 +58,8 @@ public class OrderActivity extends AppCompatActivity {
 
     public void confirmClick(View view) {
         mViewModel.sendOrder(mBurger);
+
+        Toast.makeText(OrderActivity.this, getResources().getText(R.string.msg_order), Toast.LENGTH_LONG).show();
+        finish();
     }
 }

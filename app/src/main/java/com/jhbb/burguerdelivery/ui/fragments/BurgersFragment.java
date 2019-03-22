@@ -41,7 +41,7 @@ public class BurgersFragment extends Fragment implements BurgersAdapter.CardClic
         super.onActivityCreated(savedInstanceState);
 
         mMainViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
-        mMainViewModel.getBurgerObservable().observe(getActivity(), new Observer<List<BurgerModel>>() {
+        mMainViewModel.getBurgerObservable().observe(getViewLifecycleOwner(), new Observer<List<BurgerModel>>() {
             @Override
             public void onChanged(@Nullable List<BurgerModel> burgerModels) {
                 mBurgersAdapter.setDataSet(burgerModels);

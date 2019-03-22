@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.jhbb.burguerdelivery.R;
 import com.jhbb.burguerdelivery.models.BurgerModel;
-import com.jhbb.burguerdelivery.models.IngredientModel;
 import com.jhbb.burguerdelivery.models.OrderModel;
 import com.jhbb.burguerdelivery.services.BurguerService;
 import com.jhbb.burguerdelivery.services.IngredientService;
@@ -15,7 +14,6 @@ import com.jhbb.burguerdelivery.services.OrderService;
 import com.jhbb.burguerdelivery.services.SaleService;
 import com.jhbb.burguerdelivery.utils.BurgerUtils;
 
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class Repository {
     private final SaleService saleService;
 
     private final MutableLiveData<List<BurgerModel>> burgerObservable = new MutableLiveData<>();
-    private final MutableLiveData<OrderModel> orderObservable = new MutableLiveData<>();
+    private final MutableLiveData<List<OrderModel>> orderObservable = new MutableLiveData<>();
 
     private List<BurgerModel> cachedBurgers;
 
@@ -69,34 +67,39 @@ public class Repository {
     }
 
     public void loadBurgers() {
-        burguerService.getBurgers().enqueue(new Callback<BurgerModel[]>() {
-            @Override
-            public void onResponse(Call<BurgerModel[]> call, Response<BurgerModel[]> response) {
-                cachedBurgers = Arrays.asList(response.body());
+        if (cachedBurgers == null) {
+            burguerService.getBurgers().enqueue(new Callback<BurgerModel[]>() {
+                @Override
+                public void onResponse(Call<BurgerModel[]> call, Response<BurgerModel[]> response) {
+                    cachedBurgers = Arrays.asList(response.body());
 
-                Log.d(TAG, "onResponse: returned " + cachedBurgers.size());
+                    Log.d(TAG, "onResponse: returned " + cachedBurgers.size());
 
-                for (BurgerModel burger: cachedBurgers) {
-                    String formattedText = BurgerUtils.getFormattedIngredientsList(burger.getIngredients());
-                    double price = BurgerUtils.getBurgerPrice(burger.getIngredients());
+                    for (BurgerModel burger: cachedBurgers) {
+                        String formattedText = BurgerUtils.getFormattedIngredientsList(burger.getIngredients());
+                        double price = BurgerUtils.getBurgerPrice(burger.getIngredients());
 
-                    burger.setIngredientsList(formattedText);
-                    burger.setPrice(price);
+                        burger.setIngredientsList(formattedText);
+                        burger.setPrice(price);
+                    }
+
+                    burgerObservable.setValue(cachedBurgers);
                 }
 
-                burgerObservable.setValue(cachedBurgers);
-            }
+                @Override
+                public void onFailure(Call<BurgerModel[]> call, Throwable t) {
+                    Log.e(TAG, "onFailure: t", t);
 
-            @Override
-            public void onFailure(Call<BurgerModel[]> call, Throwable t) {
-                Log.e(TAG, "onFailure: t", t);
+                    burgerObservable.setValue(null);
+                }
+            });
+        } else {
+            burgerObservable.setValue(cachedBurgers);
+        }
 
-                burgerObservable.setValue(null);
-            }
-        });
     }
 
-    public LiveData<OrderModel> getOrderLiveData() {
+    public LiveData<List<OrderModel>> getOrderLiveData() {
         return orderObservable;
     }
 
@@ -104,11 +107,43 @@ public class Repository {
         orderService.putOrder(String.valueOf(burger.getIdLanche())).enqueue(new Callback<OrderModel>() {
             @Override
             public void onResponse(Call<OrderModel> call, Response<OrderModel> response) {
-                orderObservable.setValue(response.body());
+                Log.d(TAG, "onResponse: returned " + response.body());
             }
 
             @Override
             public void onFailure(Call<OrderModel> call, Throwable t) {
+                Log.e(TAG, "onFailure: t", t);
+            }
+        });
+    }
+
+    public void loadOrders() {
+        orderService.getOrders().enqueue(new Callback<OrderModel[]>() {
+            @Override
+            public void onResponse(Call<OrderModel[]> call, Response<OrderModel[]> response) {
+                List<OrderModel> ordersList = Arrays.asList(response.body());
+
+                Log.d(TAG, "onResponse: returned " + ordersList.size());
+
+                for (OrderModel item : ordersList) {
+                    BurgerModel orderBurger = new BurgerModel();
+
+                    for (BurgerModel burger : cachedBurgers) {
+                        if (Integer.parseInt(item.getIdBurger()) == burger.getIdLanche()) {
+                            orderBurger = burger;
+                        }
+                    }
+
+                    item.setBurger(orderBurger);
+                }
+
+                orderObservable.setValue(ordersList);
+            }
+
+            @Override
+            public void onFailure(Call<OrderModel[]> call, Throwable t) {
+                Log.e(TAG, "onFailure: t", t);
+
                 orderObservable.setValue(null);
             }
         });

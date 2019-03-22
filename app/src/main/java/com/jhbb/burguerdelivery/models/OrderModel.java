@@ -9,6 +9,8 @@ public class OrderModel {
     @SerializedName("id_sandwich")
     private String idBurger;
 
+    private BurgerModel burger;
+
     public OrderModel() {
     }
 
@@ -28,11 +30,20 @@ public class OrderModel {
         this.idBurger = idBurger;
     }
 
+    public BurgerModel getBurger() {
+        return burger;
+    }
+
+    public void setBurger(BurgerModel burger) {
+        this.burger = burger;
+    }
+
     @Override
     public String toString() {
         return "OrderModel{" +
                 "id=" + id +
                 ", idBurger='" + idBurger + '\'' +
+                ", burger=" + burger +
                 '}';
     }
 }
