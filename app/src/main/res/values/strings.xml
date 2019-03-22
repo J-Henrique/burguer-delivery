@@ -14,4 +14,7 @@
 
     <string name="txt_order">Pedido</string>
     <string name="txt_burger">Lanche</string>
+
+    <string name="txt_empty_sales">Não há promoções disponíveis no momento :(</string>
+    <string name="txt_empty_orders">Nenhum pedido foi adicionado ao carrinho ainda.</string>
 </resources>

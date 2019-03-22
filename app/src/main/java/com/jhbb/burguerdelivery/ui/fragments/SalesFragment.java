@@ -44,7 +44,14 @@ public class SalesFragment extends Fragment {
         mViewModel.getSalesLiveData().observe(getViewLifecycleOwner(), new Observer<List<SaleModel>>() {
             @Override
             public void onChanged(@Nullable List<SaleModel> saleList) {
-                mSalesAdapter.setDataSet(saleList);
+                if (saleList != null && saleList.size() > 0) {
+                    mBinding.rvSalesList.setVisibility(View.VISIBLE);
+                    mBinding.txtEmptySales.setVisibility(View.GONE);
+                    mSalesAdapter.setDataSet(saleList);
+                } else {
+                    mBinding.rvSalesList.setVisibility(View.GONE);
+                    mBinding.txtEmptySales.setVisibility(View.VISIBLE);
+                }
             }
         });
 

@@ -44,7 +44,14 @@ public class OrdersFragment extends Fragment {
         mViewModel.getOrderObservable().observe(getViewLifecycleOwner(), new Observer<List<OrderModel>>() {
             @Override
             public void onChanged(@Nullable List<OrderModel> ordersList) {
-                mOrdersAdapter.setDataSet(ordersList);
+                if (ordersList != null && ordersList.size() > 0) {
+                    mBinding.rvOrdersList.setVisibility(View.VISIBLE);
+                    mBinding.txtEmptyOrders.setVisibility(View.GONE);
+                    mOrdersAdapter.setDataSet(ordersList);
+                } else {
+                    mBinding.rvOrdersList.setVisibility(View.GONE);
+                    mBinding.txtEmptyOrders.setVisibility(View.VISIBLE);
+                }
             }
         });
 
